@@ -23,12 +23,14 @@ int  rollCount = 0;
 
       if (currentPos < 0 ) {
         currentPos = 0;
-      } else if (currentPos == 100) {
+      } else if (currentPos == finalPosition) {
         // Player reached 100!
         break;
       }
 
     }
+    	System.out.println("\nFinal Position 100 Reached!\nTotal Number of Times the Dice was Rolled: " + rollCount);
+
  }
 
 
@@ -42,6 +44,14 @@ int  rollCount = 0;
         int rollLadder = roll();
         currentPos += rollLadder;
         System.out.println("\nLadder!, moving forward by "+ rollLadder +"\nCurrent Psotion: "+ currentPos);
+	// Resetting Position to previous position of goes beyond final position
+        if (currentPos > finalPosition) {
+          currentPos -= rollLadder;
+          System.out.println("\nLadder! Cannot move forward, staying at the same position.\nCurrent Position: "+ currentPos);
+        } else {
+          System.out.println("\nLadder! Moving forward by "+ rollLadder +"\nCurrent Position: "+ currentPos);
+        }
+	break;
 
       case 1:
         // Snake
