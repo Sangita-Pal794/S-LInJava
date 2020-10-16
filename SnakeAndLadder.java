@@ -5,6 +5,7 @@ class SnakeAndLadder {
  // Declaring Variables
   private static int player = 1;
   private static int initialPosition = 0;
+  private static int finalPosition = 100;
   private static int currentPos = initialPosition;
   public static Random r1 = new Random();
   public static void main(String[] args) {
