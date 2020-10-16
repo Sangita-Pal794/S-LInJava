@@ -3,36 +3,53 @@ import java.util.Random;
 class SnakeAndLadder {
 
  // Declaring Variables
-  private static int player = 0;
-  private static int position = 0;
+  private static int player = 1;
+  private static int initialPosition = 0;
+  private static int currentPos = initialPosition;
   public static Random r1 = new Random();
   public static void main(String[] args) {
 
-    roll();
-    option();
-    System.out.println(position);
-
+   gameBoard();
  }
+
+ public static void gameBoard() {
+
+int  rollCount = 0;
+  while (true) {
+
+      option();
+      rollCount++;
+
+      if (currentPos < 0 ) {
+        currentPos = 0;
+      } else if (currentPos == 100) {
+        // Player reached 100!
+        break;
+      }
+
+    }
+ }
+
+
 // Method for Options
   public static void option() {
-    int choice = r1.nextInt(2);
+    int choice = r1.nextInt(3);
 
     switch (choice) {
       case 0:
         // Ladder
-        System.out.println("Ladder");
         int rollLadder = roll();
-        position += rollLadder;
+        currentPos += rollLadder;
+        System.out.println("\nLadder!, moving forward by "+ rollLadder +"\nCurrent Psotion: "+ currentPos);
 
       case 1:
         // Snake
-        System.out.println("Snake");
         int rollSnake = roll();
-        position -= rollSnake;
-
+        currentPos -= rollSnake;
+	System.out.println("\nSnake!, moving backward by "+ rollSnake +"\nCurrent Psotion: "+ currentPos);
       default:
         // No Play
-        System.out.println("No Play");
+	System.out.println("\nNo Play!\nCurrent Position: "+ currentPos);
     }
   }
 
